@@ -88,8 +88,8 @@ class BuyerLogin extends StatelessWidget {
                 onPressed: () {
                   if (box.read('username') == username &&
                       box.read('password') == password) {
-                    Navigator.of(context).pushReplacement(MaterialPageRoute(
-                        builder: (context) => const BuyerHome()));
+                    Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(builder: (context) => BuyerHome()));
                   } else {
                     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                         content: TextRegular(

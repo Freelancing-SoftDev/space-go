@@ -73,8 +73,8 @@ class CanteenLogin extends StatelessWidget {
                 minWidth: 340,
                 height: 45,
                 onPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const CanteenHome()));
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => CanteenHome()));
                 },
                 child: TextRegular(
                     text: 'Login', fontSize: 20, color: Colors.white),
