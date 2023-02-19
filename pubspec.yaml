@@ -36,6 +36,10 @@ dependencies:
   cupertino_icons: ^1.0.2
   get_storage:
   intl: ^0.18.0
+  firebase_auth:
+  firebase_core: ^2.6.1
+  cloud_firestore:
+  firebase_storage:
   # fluttertoast:
 
 dev_dependencies:

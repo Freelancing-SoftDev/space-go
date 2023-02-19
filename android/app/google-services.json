@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "257630788480",
+    "project_id": "space-go-46253",
+    "storage_bucket": "space-go-46253.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:257630788480:android:730fa8334c07ef8e19ff65",
+        "android_client_info": {
+          "package_name": "com.example.canteen_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "257630788480-8eipo3p1o798j00fgsuv91d842o4kttj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCyn66a_Jd8Tsxue8SgDTuOSRWqzItbTAM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "257630788480-8eipo3p1o798j00fgsuv91d842o4kttj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
