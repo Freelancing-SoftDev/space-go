@@ -1,7 +1,7 @@
+import 'package:canteen_app/screens/buyer/buyer_home.dart';
 import 'package:flutter/material.dart';
 
 import '../../widgets/text_widget.dart';
-import '../buyer/menu_screen.dart';
 
 class BuyerLogin extends StatelessWidget {
   const BuyerLogin({super.key});
@@ -76,11 +76,11 @@ class BuyerLogin extends StatelessWidget {
                 minWidth: 340,
                 height: 45,
                 onPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const MenuScreen()));
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (context) => const BuyerHome()));
                 },
                 child: TextRegular(
-                    text: 'Sign up', fontSize: 20, color: Colors.white),
+                    text: 'Login', fontSize: 20, color: Colors.white),
               )
             ],
           ),

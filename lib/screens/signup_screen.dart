@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../widgets/text_widget.dart';
-import 'buyer/menu_screen.dart';
 
 class SignupScreen extends StatelessWidget {
   const SignupScreen({super.key});
@@ -91,8 +90,8 @@ class SignupScreen extends StatelessWidget {
                 minWidth: 340,
                 height: 45,
                 onPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const MenuScreen()));
+                  // Navigator.of(context).push(MaterialPageRoute(
+                  //     builder: (context) => const MenuScreen()));
                 },
                 child: TextRegular(
                     text: 'Sign up', fontSize: 20, color: Colors.white),
