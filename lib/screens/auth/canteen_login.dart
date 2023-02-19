@@ -1,3 +1,4 @@
+import 'package:canteen_app/screens/auth/canteen_signup.dart';
 import 'package:canteen_app/screens/canteen/canteen_home.dart';
 import 'package:flutter/material.dart';
 
@@ -40,8 +41,8 @@ class CanteenLogin extends StatelessWidget {
                 child: TextFormField(
                     keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
-                        prefixIcon: const Icon(Icons.email),
-                        hintText: 'Email',
+                        prefixIcon: const Icon(Icons.person),
+                        hintText: 'Username',
                         filled: true,
                         fillColor: Colors.white,
                         border: OutlineInputBorder(
@@ -77,6 +78,17 @@ class CanteenLogin extends StatelessWidget {
                 },
                 child: TextRegular(
                     text: 'Login', fontSize: 20, color: Colors.white),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              TextButton(
+                onPressed: (() {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const CanteenSignupPage()));
+                }),
+                child: TextBold(
+                    text: 'Create Account', fontSize: 14, color: Colors.black),
               )
             ],
           ),
