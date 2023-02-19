@@ -1,3 +1,5 @@
+import 'package:canteen_app/screens/auth/buyer_login.dart';
+import 'package:canteen_app/screens/auth/canteen_login.dart';
 import 'package:canteen_app/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -20,31 +22,43 @@ class LandingScreen extends StatelessWidget {
             const SizedBox(
               height: 50,
             ),
-            Container(
-              height: 150,
-              width: 300,
-              decoration: BoxDecoration(
-                color: Colors.blue,
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Center(
-                child: TextBold(
-                    text: 'Student', fontSize: 18, color: Colors.white),
+            GestureDetector(
+              onTap: (() {
+                Navigator.of(context).pushReplacement(MaterialPageRoute(
+                    builder: (context) => const BuyerLogin()));
+              }),
+              child: Container(
+                height: 150,
+                width: 300,
+                decoration: BoxDecoration(
+                  color: Colors.blue,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Center(
+                  child: TextBold(
+                      text: 'Student', fontSize: 18, color: Colors.white),
+                ),
               ),
             ),
             const SizedBox(
               height: 50,
             ),
-            Container(
-              height: 150,
-              width: 300,
-              decoration: BoxDecoration(
-                color: Colors.blue,
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Center(
-                child: TextBold(
-                    text: 'Canteen', fontSize: 18, color: Colors.white),
+            GestureDetector(
+              onTap: (() {
+                Navigator.of(context).pushReplacement(MaterialPageRoute(
+                    builder: (context) => const CanteenLogin()));
+              }),
+              child: Container(
+                height: 150,
+                width: 300,
+                decoration: BoxDecoration(
+                  color: Colors.blue,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Center(
+                  child: TextBold(
+                      text: 'Canteen', fontSize: 18, color: Colors.white),
+                ),
               ),
             ),
           ],

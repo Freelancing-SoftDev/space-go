@@ -31,7 +31,7 @@ class LoadingScreen extends StatelessWidget {
               const SizedBox(
                 height: 15,
               ),
-              TextRegular(
+              TextBold(
                   text: 'Space Go', fontSize: 45, color: Colors.amberAccent)
             ],
           ),
