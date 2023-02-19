@@ -1,11 +1,15 @@
 import 'package:canteen_app/screens/auth/buyer_signup.dart';
 import 'package:canteen_app/screens/buyer/buyer_home.dart';
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
 
 import '../../widgets/text_widget.dart';
 
 class BuyerLogin extends StatelessWidget {
-  const BuyerLogin({super.key});
+  final box = GetStorage();
+
+  late String username;
+  late String password;
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +47,9 @@ class BuyerLogin extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(left: 25, right: 25),
                 child: TextFormField(
-                    keyboardType: TextInputType.emailAddress,
+                    onChanged: (value) {
+                      username = value;
+                    },
                     decoration: InputDecoration(
                         prefixIcon: const Icon(Icons.person),
                         hintText: 'Username',
@@ -58,6 +64,9 @@ class BuyerLogin extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(left: 25, right: 25),
                 child: TextFormField(
+                    onChanged: (value) {
+                      password = value;
+                    },
                     obscureText: true,
                     decoration: InputDecoration(
                         prefixIcon: const Icon(Icons.key),
@@ -77,8 +86,17 @@ class BuyerLogin extends StatelessWidget {
                 minWidth: 340,
                 height: 45,
                 onPressed: () {
-                  Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      builder: (context) => const BuyerHome()));
+                  if (box.read('username') == username &&
+                      box.read('password') == password) {
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(
+                        builder: (context) => const BuyerHome()));
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                        content: TextRegular(
+                            text: 'Invalid Account',
+                            fontSize: 14,
+                            color: Colors.white)));
+                  }
                 },
                 child: TextRegular(
                     text: 'Login', fontSize: 20, color: Colors.white),
@@ -89,7 +107,7 @@ class BuyerLogin extends StatelessWidget {
               TextButton(
                 onPressed: (() {
                   Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const BuyerSignupPage()));
+                      builder: (context) => BuyerSignupPage()));
                 }),
                 child: TextBold(
                     text: 'Create Account', fontSize: 14, color: Colors.black),

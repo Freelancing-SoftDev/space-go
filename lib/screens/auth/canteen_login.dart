@@ -85,7 +85,7 @@ class CanteenLogin extends StatelessWidget {
               TextButton(
                 onPressed: (() {
                   Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const CanteenSignupPage()));
+                      builder: (context) => CanteenSignupPage()));
                 }),
                 child: TextBold(
                     text: 'Create Account', fontSize: 14, color: Colors.black),
