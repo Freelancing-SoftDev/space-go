@@ -138,7 +138,6 @@ class CanteenHome extends StatelessWidget {
               stream: FirebaseFirestore.instance
                   .collection('Orders')
                   .where('storeName', isEqualTo: box.read('name'))
-                  .where('status', isEqualTo: 'Pending')
                   .snapshots(),
               builder: (BuildContext context,
                   AsyncSnapshot<QuerySnapshot> snapshot) {
@@ -175,19 +174,19 @@ class CanteenHome extends StatelessWidget {
                               size: 32,
                             ),
                             title: TextRegular(
-                                text: 'Name of Menu',
+                                text: data.docs[index]['name'],
                                 fontSize: 14,
                                 color: Colors.black),
                             subtitle: TextRegular(
-                                text: 'Name of Student',
+                                text: data.docs[index]['studentName'],
                                 fontSize: 12,
                                 color: Colors.grey),
                             trailing: SizedBox(
-                              width: 110,
+                              width: 120,
                               child: Row(
                                 children: [
                                   TextBold(
-                                      text: '280php',
+                                      text: '${data.docs[index]['price']}php',
                                       fontSize: 16,
                                       color: Colors.black),
                                   IconButton(
@@ -196,6 +195,15 @@ class CanteenHome extends StatelessWidget {
                                           .collection('Orders')
                                           .doc(data.docs[index].id)
                                           .delete();
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        SnackBar(
+                                          content: TextRegular(
+                                              text: 'Order Received!',
+                                              fontSize: 12,
+                                              color: Colors.white),
+                                        ),
+                                      );
                                     }),
                                     icon: const Icon(
                                       Icons.check_circle_outline,
