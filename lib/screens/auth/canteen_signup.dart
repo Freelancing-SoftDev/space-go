@@ -1,5 +1,5 @@
-import 'package:canteen_app/screens/auth/buyer_login.dart';
 import 'package:canteen_app/screens/auth/canteen_login.dart';
+import 'package:canteen_app/services/add_store.dart';
 import 'package:canteen_app/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
@@ -92,6 +92,7 @@ class CanteenSignupPage extends StatelessWidget {
 
                   box.write('username', username);
                   box.write('password', password);
+                  addStore(name);
                   Navigator.of(context).push(MaterialPageRoute(
                       builder: (context) => const CanteenLogin()));
                 },

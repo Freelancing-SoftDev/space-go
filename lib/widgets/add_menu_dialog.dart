@@ -1,5 +1,7 @@
+import 'package:canteen_app/services/add_menu.dart';
 import 'package:canteen_app/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
 
 class AddMenuItemDialog extends StatefulWidget {
   const AddMenuItemDialog({Key? key}) : super(key: key);
@@ -14,6 +16,8 @@ class _AddMenuItemDialogState extends State<AddMenuItemDialog> {
   late String _menuName;
   late String _menuDescription;
   late double _menuPrice;
+
+  final box = GetStorage();
 
   @override
   Widget build(BuildContext context) {
@@ -66,6 +70,9 @@ class _AddMenuItemDialogState extends State<AddMenuItemDialog> {
               form.save();
 
               Navigator.of(context).pop();
+
+              addMenu(
+                  box.read('name'), _menuName, _menuDescription, _menuPrice);
 
               ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                   content: TextRegular(

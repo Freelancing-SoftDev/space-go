@@ -9,11 +9,14 @@ class OrderDialog extends StatelessWidget {
   final DateTime orderDate;
   final String pickupTime;
 
-  const OrderDialog(
+  late var orderData;
+
+  OrderDialog(
       {required this.orderItems,
       required this.orderDate,
       required this.pickupTime,
-      required this.prices});
+      required this.prices,
+      required this.orderData});
 
   @override
   Widget build(BuildContext context) {
@@ -31,13 +34,15 @@ class OrderDialog extends StatelessWidget {
             width: 300,
             child: ListView.builder(
               shrinkWrap: true,
-              itemCount: orderItems.length,
+              itemCount: orderData.docs.length,
               itemBuilder: (BuildContext context, int index) {
                 return Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(orderItems[index]),
-                    Text('${prices[index]}'),
+                    Text(orderData.docs[index]['storeName'] +
+                        ' - ' +
+                        orderData.docs[index]['name']),
+                    Text('${orderData.docs[index]['price']}php'),
                   ],
                 );
               },
