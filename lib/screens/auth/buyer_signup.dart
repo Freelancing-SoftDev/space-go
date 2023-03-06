@@ -1,4 +1,4 @@
-import 'package:canteen_app/screens/auth/buyer_login.dart';
+import 'package:canteen_app/screens/buyer/buyer_home.dart';
 import 'package:canteen_app/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
@@ -106,7 +106,7 @@ class BuyerSignupPage extends StatelessWidget {
                   box.write('username', username);
                   box.write('password', password);
                   Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => BuyerLogin()));
+                      MaterialPageRoute(builder: (context) => BuyerHome()));
                 },
                 child: TextRegular(
                     text: 'Register', fontSize: 20, color: Colors.white),
