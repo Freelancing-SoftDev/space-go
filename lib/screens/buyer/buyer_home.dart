@@ -27,8 +27,8 @@ class _BuyerHomeState extends State<BuyerHome> {
       appBar: AppBar(
         leading: IconButton(
           onPressed: (() {
-            Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => const ProfileScreen()));
+            Navigator.of(context)
+                .push(MaterialPageRoute(builder: (context) => ProfileScreen()));
           }),
           icon: const Icon(Icons.person),
         ),
