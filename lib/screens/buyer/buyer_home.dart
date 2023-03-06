@@ -1,4 +1,5 @@
 import 'package:canteen_app/screens/auth/canteen_login.dart';
+import 'package:canteen_app/screens/buyer/profile_screen.dart';
 import 'package:canteen_app/services/add_order.dart';
 import 'package:canteen_app/widgets/order_dialog.dart';
 import 'package:canteen_app/widgets/text_widget.dart';
@@ -24,6 +25,13 @@ class _BuyerHomeState extends State<BuyerHome> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          onPressed: (() {
+            Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => const ProfileScreen()));
+          }),
+          icon: const Icon(Icons.person),
+        ),
         automaticallyImplyLeading: false,
         title: TextBold(text: 'HOME', fontSize: 18, color: Colors.white),
         centerTitle: true,
