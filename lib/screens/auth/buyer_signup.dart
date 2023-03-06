@@ -3,13 +3,23 @@ import 'package:canteen_app/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 
-class BuyerSignupPage extends StatelessWidget {
+class BuyerSignupPage extends StatefulWidget {
+  @override
+  State<BuyerSignupPage> createState() => _BuyerSignupPageState();
+}
+
+class _BuyerSignupPageState extends State<BuyerSignupPage> {
   late String name;
+
   late String studentId;
+
   late String username;
+
   late String password;
 
   final box = GetStorage();
+
+  var isObscure = true;
 
   @override
   Widget build(BuildContext context) {
@@ -80,11 +90,20 @@ class BuyerSignupPage extends StatelessWidget {
                 padding: const EdgeInsets.only(
                     left: 25, right: 25, top: 10, bottom: 10),
                 child: TextFormField(
-                    obscureText: true,
+                    obscureText: isObscure,
                     onChanged: ((value) {
                       password = value;
                     }),
                     decoration: InputDecoration(
+                        suffixIcon: IconButton(
+                            onPressed: (() {
+                              setState(() {
+                                isObscure = !isObscure;
+                              });
+                            }),
+                            icon: isObscure
+                                ? const Icon(Icons.visibility)
+                                : const Icon(Icons.visibility_off)),
                         hintText: 'Password',
                         filled: true,
                         fillColor: Colors.white,

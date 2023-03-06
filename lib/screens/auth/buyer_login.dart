@@ -5,10 +5,17 @@ import 'package:get_storage/get_storage.dart';
 
 import '../../widgets/text_widget.dart';
 
-class BuyerLogin extends StatelessWidget {
+class BuyerLogin extends StatefulWidget {
+  @override
+  State<BuyerLogin> createState() => _BuyerLoginState();
+}
+
+class _BuyerLoginState extends State<BuyerLogin> {
   final box = GetStorage();
+  var isObscure = true;
 
   late String username;
+
   late String password;
 
   @override
@@ -69,6 +76,15 @@ class BuyerLogin extends StatelessWidget {
                     },
                     obscureText: true,
                     decoration: InputDecoration(
+                        suffixIcon: IconButton(
+                            onPressed: (() {
+                              setState(() {
+                                isObscure = !isObscure;
+                              });
+                            }),
+                            icon: isObscure
+                                ? const Icon(Icons.visibility)
+                                : const Icon(Icons.visibility_off)),
                         prefixIcon: const Icon(Icons.key),
                         hintText: 'Password',
                         filled: true,

@@ -4,9 +4,15 @@ import 'package:flutter/material.dart';
 
 import '../../widgets/text_widget.dart';
 
-class CanteenLogin extends StatelessWidget {
+class CanteenLogin extends StatefulWidget {
   const CanteenLogin({super.key});
 
+  @override
+  State<CanteenLogin> createState() => _CanteenLoginState();
+}
+
+class _CanteenLoginState extends State<CanteenLogin> {
+  var isObscure = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,6 +62,15 @@ class CanteenLogin extends StatelessWidget {
                 child: TextFormField(
                     obscureText: true,
                     decoration: InputDecoration(
+                        suffixIcon: IconButton(
+                            onPressed: (() {
+                              setState(() {
+                                isObscure = !isObscure;
+                              });
+                            }),
+                            icon: isObscure
+                                ? const Icon(Icons.visibility)
+                                : const Icon(Icons.visibility_off)),
                         prefixIcon: const Icon(Icons.key),
                         hintText: 'Password',
                         filled: true,

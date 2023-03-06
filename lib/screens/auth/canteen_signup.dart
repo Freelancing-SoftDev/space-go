@@ -4,13 +4,21 @@ import 'package:canteen_app/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 
-class CanteenSignupPage extends StatelessWidget {
+class CanteenSignupPage extends StatefulWidget {
+  @override
+  State<CanteenSignupPage> createState() => _CanteenSignupPageState();
+}
+
+class _CanteenSignupPageState extends State<CanteenSignupPage> {
   late String name;
 
   late String username;
+
   late String password;
 
   final box = GetStorage();
+
+  var isObscure = true;
 
   @override
   Widget build(BuildContext context) {
@@ -72,6 +80,15 @@ class CanteenSignupPage extends StatelessWidget {
                       password = value;
                     }),
                     decoration: InputDecoration(
+                        suffixIcon: IconButton(
+                            onPressed: (() {
+                              setState(() {
+                                isObscure = !isObscure;
+                              });
+                            }),
+                            icon: isObscure
+                                ? const Icon(Icons.visibility)
+                                : const Icon(Icons.visibility_off)),
                         hintText: 'Password',
                         filled: true,
                         fillColor: Colors.white,
