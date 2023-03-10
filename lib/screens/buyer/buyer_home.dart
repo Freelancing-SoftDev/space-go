@@ -9,6 +9,8 @@ import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 
 class BuyerHome extends StatefulWidget {
+  const BuyerHome({super.key});
+
   @override
   State<BuyerHome> createState() => _BuyerHomeState();
 }
@@ -238,13 +240,11 @@ class _BuyerHomeState extends State<BuyerHome> {
                                                                                   TextBold(text: '${data1.docs[index]['price']}php', fontSize: 16, color: Colors.black),
                                                                                   IconButton(
                                                                                     onPressed: (() {
-                                                                                      if (orders.contains(index)) {
-                                                                                      } else {
-                                                                                        setState(() {
-                                                                                          orders.add(index);
-                                                                                          orderData = data1;
-                                                                                        });
-                                                                                      }
+                                                                                      setState(() {
+                                                                                        orders.add(index);
+                                                                                        orderData = data1;
+                                                                                      });
+
                                                                                       // Fluttertoast.showToast(
                                                                                       //     msg: 'Added Menu to Checkout');
                                                                                     }),
@@ -332,7 +332,6 @@ class _BuyerHomeState extends State<BuyerHome> {
                                                                               Navigator.of(context).pop();
 
                                                                               for (int i = 0; i < orders.length; i++) {
-                                                                                print(orderData.docs[i]['name']);
                                                                                 addOrder(orderData.docs[i]['storeName'], orderData.docs[i]['name'], orderData.docs[i]['desc'], orderData.docs[i]['price'], box.read('name'), box.read('studentId'));
                                                                               }
                                                                               showDialog(
