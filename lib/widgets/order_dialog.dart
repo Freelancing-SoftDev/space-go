@@ -12,7 +12,8 @@ class OrderDialog extends StatelessWidget {
   late var orderData;
 
   OrderDialog(
-      {required this.orderItems,
+      {super.key,
+      required this.orderItems,
       required this.orderDate,
       required this.pickupTime,
       required this.prices,

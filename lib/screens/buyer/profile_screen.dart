@@ -6,6 +6,8 @@ import 'package:get_storage/get_storage.dart';
 class ProfileScreen extends StatelessWidget {
   final box = GetStorage();
 
+  ProfileScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,7 +64,9 @@ class ProfileScreen extends StatelessWidget {
                                   child: Image.asset('assets/images/food.png'),
                                 ),
                                 title: TextRegular(
-                                    text: data.docs[index]['name'],
+                                    text: data.docs[index]['name'] +
+                                        ' ' +
+                                        'x${data.docs[index]['qty']}',
                                     fontSize: 14,
                                     color: Colors.black),
                                 subtitle: TextRegular(

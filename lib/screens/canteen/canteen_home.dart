@@ -8,6 +8,8 @@ import 'package:get_storage/get_storage.dart';
 class CanteenHome extends StatelessWidget {
   final box = GetStorage();
 
+  CanteenHome({super.key});
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -174,7 +176,9 @@ class CanteenHome extends StatelessWidget {
                               size: 32,
                             ),
                             title: TextRegular(
-                                text: data.docs[index]['name'],
+                                text: data.docs[index]['name'] +
+                                    ' ' +
+                                    'x${data.docs[index]['qty']}',
                                 fontSize: 14,
                                 color: Colors.black),
                             subtitle: TextRegular(

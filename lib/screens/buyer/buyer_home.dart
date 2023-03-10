@@ -120,7 +120,9 @@ class _BuyerHomeState extends State<BuyerHome> {
                                   child: Image.asset('assets/images/food.png'),
                                 ),
                                 title: TextRegular(
-                                    text: data.docs[index]['name'],
+                                    text: data.docs[index]['name'] +
+                                        ' ' +
+                                        'x${data.docs[index]['qty']}',
                                     fontSize: 14,
                                     color: Colors.black),
                                 trailing: IconButton(
