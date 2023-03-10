@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 Future addOrder(
-    String storeName, name, desc, price, studentName, studentId) async {
+    String storeName, name, desc, price, studentName, studentId, qty) async {
   final docUser = FirebaseFirestore.instance.collection('Orders').doc();
 
   final json = {
@@ -12,6 +12,7 @@ Future addOrder(
     'studentName': studentName,
     'studentId': studentId,
     'id': docUser.id,
+    'qty': qty
   };
 
   await docUser.set(json);

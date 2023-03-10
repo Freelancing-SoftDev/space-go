@@ -23,6 +23,10 @@ class _BuyerHomeState extends State<BuyerHome> {
 
   late var orderData;
 
+  List<int> qtys = [];
+
+  int _quantity = 1;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -240,11 +244,65 @@ class _BuyerHomeState extends State<BuyerHome> {
                                                                                   TextBold(text: '${data1.docs[index]['price']}php', fontSize: 16, color: Colors.black),
                                                                                   IconButton(
                                                                                     onPressed: (() {
-                                                                                      setState(() {
-                                                                                        orders.add(index);
-                                                                                        orderData = data1;
-                                                                                      });
+                                                                                      if (orders.contains(index)) {
+                                                                                      } else {
+                                                                                        setState(() {
+                                                                                          orders.add(index);
+                                                                                          orderData = data1;
+                                                                                        });
 
+                                                                                        showDialog(
+                                                                                            context: context,
+                                                                                            builder: (context) {
+                                                                                              return StatefulBuilder(builder: (context, setState) {
+                                                                                                return AlertDialog(
+                                                                                                  title: const Text('Select Quantity'),
+                                                                                                  content: Column(
+                                                                                                    mainAxisSize: MainAxisSize.min,
+                                                                                                    children: [
+                                                                                                      Row(
+                                                                                                        mainAxisAlignment: MainAxisAlignment.center,
+                                                                                                        children: [
+                                                                                                          IconButton(
+                                                                                                            icon: const Icon(Icons.remove),
+                                                                                                            onPressed: () {
+                                                                                                              setState(() {
+                                                                                                                if (_quantity > 1) {
+                                                                                                                  _quantity--;
+                                                                                                                }
+                                                                                                              });
+                                                                                                            },
+                                                                                                          ),
+                                                                                                          const SizedBox(width: 20),
+                                                                                                          Text(
+                                                                                                            '$_quantity',
+                                                                                                            style: const TextStyle(fontSize: 20),
+                                                                                                          ),
+                                                                                                          const SizedBox(width: 20),
+                                                                                                          IconButton(
+                                                                                                            icon: const Icon(Icons.add),
+                                                                                                            onPressed: () {
+                                                                                                              setState(() {
+                                                                                                                _quantity++;
+                                                                                                              });
+                                                                                                            },
+                                                                                                          ),
+                                                                                                        ],
+                                                                                                      ),
+                                                                                                      const SizedBox(height: 20),
+                                                                                                      ElevatedButton(
+                                                                                                        onPressed: () {
+                                                                                                          qtys.add(_quantity);
+                                                                                                          Navigator.of(context).pop(_quantity);
+                                                                                                        },
+                                                                                                        child: const Text('OK'),
+                                                                                                      ),
+                                                                                                    ],
+                                                                                                  ),
+                                                                                                );
+                                                                                              });
+                                                                                            });
+                                                                                      }
                                                                                       // Fluttertoast.showToast(
                                                                                       //     msg: 'Added Menu to Checkout');
                                                                                     }),
@@ -332,7 +390,7 @@ class _BuyerHomeState extends State<BuyerHome> {
                                                                               Navigator.of(context).pop();
 
                                                                               for (int i = 0; i < orders.length; i++) {
-                                                                                addOrder(orderData.docs[i]['storeName'], orderData.docs[i]['name'], orderData.docs[i]['desc'], orderData.docs[i]['price'], box.read('name'), box.read('studentId'));
+                                                                                addOrder(orderData.docs[i]['storeName'], orderData.docs[i]['name'], orderData.docs[i]['desc'], orderData.docs[i]['price'], box.read('name'), box.read('studentId'), qtys[i]);
                                                                               }
                                                                               showDialog(
                                                                                   context: context,
